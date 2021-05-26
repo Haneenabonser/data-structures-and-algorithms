@@ -23,7 +23,6 @@ Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
 
-
 const getNames = (arr) => {
   // Solution code here...
   let array1=arr.map(item=>{
