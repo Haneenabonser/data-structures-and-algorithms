@@ -117,8 +117,13 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
-  let reg =/\b[A-Z](\w)*/g;
-    return str.match(reg);
+  let regex1=/\b[A-Z](\w)*/g;
+  let arr=[];
+  if(str.match(regex1)===null){
+    return arr;
+  }else{
+    return str.match(regex1);
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,6 +134,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let regexPattern = /^[A-J](\w)*/g;
+  let result = [];
+  arr.forEach(item=>{
+    if(regexPattern.test(item)) {
+      result.push(item)
+    }
+  })
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
