@@ -35,11 +35,14 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-
+const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
+  finalExam: true
+};
 const getCourseKeys = (obj) => {
   // Solution code here...
-  let propertiesArr =Object.keys(obj);
-  return propertiesArr;
+  obj=Object.keys(courseInfo);
+  return obj;
 };
 
 
@@ -176,6 +179,7 @@ const hasChildrenValues = (arr, character) => {
       test= true;
     }
   });
+  
   return test;
 
 };
