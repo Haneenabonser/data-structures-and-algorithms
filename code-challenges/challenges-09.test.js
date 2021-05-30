@@ -8,17 +8,25 @@ using the 'reduce' method.
 
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
+
+describe('Testing challenge 1', () => {
+  test('It should return the maximum number found', () => {
+    expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
+  });
+  test('It should handle negatives and return the maximum number found', () => {
+    expect(maxInArray([4, -2, -7, 5, -9, 2])).toStrictEqual(5);
+  });
+});
+
 const maxInArray = (arr) => {
   // Solution code here...
-  let max= arr.reduce((acc,val)=>{
-    if(acc<val){
-      acc =val;
+  return arr.reduce((acc, val) => {
+    if (acc < val) {
+      acc = val
     }
-    return acc;
-  });
-  return max;
+    return acc
+  })
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -27,15 +35,11 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
-};
 
 const getCourseKeys = (obj) => {
   // Solution code here...
-  obj=Object.keys(courseInfo);
-  return obj;
+  let propertiesArr =Object.keys(obj);
+  return propertiesArr;
 };
 
 
@@ -49,17 +53,18 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
-  let arr=Object.values(obj);
-  let boolean;
-  arr.forEach(value1=>{
+  let x=Object.values(obj);
+  let y;
+  x.forEach(value1=>{
     if(value1==value){
-      return boolean=true;
+      return y=true;
     }else{
-      return boolean=false;
+      return y=false;
     }
   });
-  return boolean;
+  return y;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
