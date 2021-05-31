@@ -197,9 +197,19 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
-  
+  let arr=[];
+  let shortest;
+  data.filter(item=>{
+    return(arr.push(item.name));
+  });
+  shortest=arr[0];
+  for(let i=0; i<arr.length;i++){
+    if(shortest.length>=arr[i].length){
+      shortest=arr[i];
+    }
+  }
+  return short;
 };
-
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
