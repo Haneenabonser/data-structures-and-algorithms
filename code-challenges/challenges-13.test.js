@@ -8,20 +8,20 @@ Write a function named longestString that takes in an array of strings and retur
 
 const longestString = (arr) => {
   // Solution code here...
-    let maxString=0;
-    let itemIdx=-1;
-    arr.map((item,idx)=>{
-      if(item.length>maxString){
-        maxString=item.length;
-        itemIdx=idx;
-  
-      }
-     
-    });
-    return itemIdx;
-  };
-  
-  
+  let maxString = 0;
+  let itemIdx = -1;
+  arr.map((item, idx) => {
+    if (item.length > maxString) {
+      maxString = item.length;
+      itemIdx = idx;
+
+    }
+
+  });
+  return itemIdx;
+};
+
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -32,8 +32,8 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
-  let Array=[];
-  arr.map(item=>{
+  let Array = [];
+  arr.map(item => {
     Array.push(item.charAt(0));
   })
   return Array;
@@ -49,10 +49,10 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
-  let Array=[];
-  arr.map(item=>{
-    if(item.includes(':)'))
-    Array.push(item);
+  let Array = [];
+  arr.map(item => {
+    if (item.includes(':)'))
+      Array.push(item);
   })
   return Array;
 };
@@ -68,7 +68,13 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  let numbers = [];
+  arr.map(item => {
+    numbers.push(item.substring(1, 4) + item.substring(6, 9) + item.substring(10, 14))
+  })
+  return numbers
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 
@@ -80,10 +86,10 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
-  let odd='';
-  str.split('').map((item,idx)=>{
-    if(idx %2 !==0){
-      odd=odd+item;
+  let odd = '';
+  str.split('').map((item, idx) => {
+    if (idx % 2 !== 0) {
+      odd = odd + item;
 
     }
   });
@@ -96,9 +102,27 @@ CHALLENGE 6
 
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
+describe('Testing challenge 6', () => {
+  test('It should correctly assess whether all the strings are happy', () => {
+    const words = ['things', 'apple (:)', ':)banana', 'missing that thing', 'cant:)aloupe'];
+
+    expect(allHappy(words)).toStrictEqual(false);
+    expect(allHappy(['apple (:)', ':)banana', 'cant:)aloupe'])).toStrictEqual(true);
+    expect(allHappy([])).toStrictEqual(true);
+  });
+});
 
 const allHappy = (arr) => {
   // Solution code here...
+  let newArr = arr;
+  let filterdArr = arr.filter(item => {
+    return item.includes(':)');
+  })
+  if (newArr.length === filterdArr.length) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -191,7 +215,7 @@ describe('Testing challenge 1', () => {
   test('It should return an index position of the longest string', () => {
     const strArray1 = ['Ginger', 'Goose', 'Tangerine', 'Rosie', 'Mario', 'Malaki']
     const strArray2 = [];
-    const strArray3= ['Ginger']
+    const strArray3 = ['Ginger']
 
     expect(longestString(strArray1)).toStrictEqual(2);
     expect(longestString(strArray2)).toStrictEqual(-1);
