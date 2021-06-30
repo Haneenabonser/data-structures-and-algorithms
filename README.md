@@ -15,3 +15,7 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 |     Code Challenge     |              Link                            |
 |------------------------|----------------------------------------------|
 |   Challenge01          |[Array-reverse](array-reverse/README.md)|
+|   Challenge02          |[array-insert-shift](array-insert-shift/README.md)|
+|   Challenge03          |[array-binary-search](array-binary-search/README.md)|
+
+
