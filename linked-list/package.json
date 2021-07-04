@@ -1,0 +1,18 @@
+{
+  "name": "linked-list",
+  "version": "1.0.0",
+  "description": "Is a type of linked list that is unidirectional, that is, it can be traversed in only one direction from head to the last node (tail).",
+  "main": "linked-list.js",
+  "scripts": {
+    "start": "node linked-list.js",
+    "test": "jest --verbose --coverage",
+    "watch":"jest --coverage --coverage --watchAll"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
