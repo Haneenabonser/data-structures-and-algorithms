@@ -1,7 +1,7 @@
 
 class Node {
-    constructor(value, next = null) {
-        this.value = value;
+    constructor(val, next = null) {
+        this.val = val;
         this.next = next;
     }
 }
@@ -11,10 +11,10 @@ class LinkedList {
         this.head = null;
     }
 
-    insert(value) {
+    insert(val) {
         try {
 
-            let node = new Node(value);
+            let node = new Node(val);
             if (!this.head) {
                 this.head = node;
             } else {
@@ -22,11 +22,11 @@ class LinkedList {
                 this.head = node;
             }
         } catch {
-            console.log('Please enter an input');
+            console.log('Enter a valid input');
         }
     }
 
-    includes(value) {
+    includes(val) {
         try {
 
             let currentNode = this.head;
@@ -35,19 +35,19 @@ class LinkedList {
             } else {
 
                 while (currentNode.next) {
-                    if (currentNode.value == value) {
+                    if (currentNode.val == val) {
                         return true;
                     }
                     currentNode = currentNode.next;
 
-                    if (currentNode.next == null && value == currentNode.value) {
+                    if (currentNode.next == null && val == currentNode.val) {
                         return true;
                     }
                 }
                 return false;
             }
         } catch {
-            console.log('Please enter a valid input');
+            console.log('Enter a valid input');
         }
     }
 
@@ -58,27 +58,27 @@ class LinkedList {
             let currentNode = this.head;
 
             while (currentNode.next) {
-                if (currentNode.value == null || currentNode.value == undefined) {
+                if (currentNode.val == null || currentNode.val == undefined) {
                     string = string + `NULL -> `;
                 } else {
 
-                    string = string + `{${currentNode.value}} -> `
+                    string = string + `{${currentNode.val}} -> `
                 }
                 currentNode = currentNode.next;
                 if (currentNode.next == null) {
-                    string = string + `{${currentNode.value}}`
+                    string = string + `{${currentNode.val}}`
                 }
             }
 
             return string;
         } catch {
-            console.log('An error occured');
+            console.log('Error');
         }
 
     }
 
-    append(value) {
-        const node = new Node(value);
+    append(val) {
+        const node = new Node(val);
         if (!this.head) {
             this.head = node;
         } else {
@@ -98,11 +98,11 @@ function zipLists(list1, list2) {
 
     while (currentNode1 || currentNode2) {
         if (currentNode1 != null) {
-            ll3.append(currentNode1.value);
+            ll3.append(currentNode1.val);
             currentNode1 = currentNode1.next;
         }
         if (currentNode2 != null) {
-            ll3.append(currentNode2.value);
+            ll3.append(currentNode2.val);
             currentNode2 = currentNode2.next;
         }
     }
