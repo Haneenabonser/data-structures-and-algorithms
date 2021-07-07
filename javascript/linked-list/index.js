@@ -1,10 +1,7 @@
-'use strict';
-
-'use strict';
 
 class Node {
-    constructor(val, next = null) {
-        this.val = val;
+    constructor(value, next = null) {
+        this.value = value;
         this.next = next;
     }
 }
@@ -14,9 +11,10 @@ class LinkedList {
         this.head = null;
     }
 
-    insert(val) {
+    insert(value) {
         try {
-            let node = new Node(val);
+
+            let node = new Node(value);
             if (!this.head) {
                 this.head = node;
             } else {
@@ -24,55 +22,63 @@ class LinkedList {
                 this.head = node;
             }
         } catch {
-            console.log('Enter a valid input');
+            console.log('Please enter an input');
         }
-    };
+    }
 
-    includes(val) {
+    includes(value) {
         try {
+
             let currentNode = this.head;
             if (!this.head) {
                 return false;
             } else {
+
                 while (currentNode.next) {
-                    if (currentNode.val == val) {
+                    if (currentNode.value == value) {
                         return true;
                     }
                     currentNode = currentNode.next;
-                    if (currentNode.next == null && val == currentNode.val) {
+
+                    if (currentNode.next == null && value == currentNode.value) {
                         return true;
                     }
                 }
                 return false;
             }
         } catch {
-            console.log('Enter a valid input');
-        };
-    };
+            console.log('Please enter a valid input');
+        }
+    }
 
     toString() {
         try {
-            let currentNode = this.head;
+
             let string = '';
+            let currentNode = this.head;
 
             while (currentNode.next) {
-                if (currentNode.val == null || currentNode.val == undefined) {
+                if (currentNode.value == null || currentNode.value == undefined) {
                     string = string + `NULL -> `;
                 } else {
-                    string = string + `{${currentNode.val}} -> `
+
+                    string = string + `{${currentNode.value}} -> `
                 }
                 currentNode = currentNode.next;
                 if (currentNode.next == null) {
-                    string = string + `{${currentNode.val}}`
+                    string = string + `{${currentNode.value}}`
                 }
             }
+
             return string;
         } catch {
-            console.log('Error');
+            console.log('An error occured');
         }
-    };
-    append(val) {
-        const node = new Node(val);
+
+    }
+
+    append(value) {
+        const node = new Node(value);
         if (!this.head) {
             this.head = node;
         } else {
@@ -83,38 +89,24 @@ class LinkedList {
             currentNode.next = node;
         }
     }
-    insertBefore(newVal, val) {
-        const node = new Node(newVal);
-        let currentNode = this.head;
-
-        if (val == this.head.val) {
-            node.next = this.head;
-            this.head = node;
-        } else {
-
-            while (currentNode) {
-                if (currentNode.next.val == val) {
-                    node.next = currentNode.next;
-                    currentNode.next = node;
-                    break;
-                }
-                currentNode = currentNode.next;
-            }
-        }
-    }
-    insertAfter(newVal, val) {
-        let node = new Node(newVal);
-        let currentNode = this.head;
-        while (currentNode) {
-            if (currentNode.val == val) {
-                node.next = currentNode.next;
-                currentNode.next = node;
-                break;
-            }
-            currentNode = currentNode.next;
-        }
-    }
 }
 
+function zipLists(list1, list2) {
+    let currentNode1 = list1.head;
+    let currentNode2 = list2.head;
+    let ll3 = new LinkedList();
 
-module.exports = LinkedList;
+    while (currentNode1 || currentNode2) {
+        if (currentNode1 != null) {
+            ll3.append(currentNode1.value);
+            currentNode1 = currentNode1.next;
+        }
+        if (currentNode2 != null) {
+            ll3.append(currentNode2.value);
+            currentNode2 = currentNode2.next;
+        }
+    }
+    return ll3.toString();
+}
+
+module.exports = { LinkedList, zipLists };
