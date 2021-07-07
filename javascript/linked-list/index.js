@@ -94,19 +94,19 @@ class LinkedList {
 function zipLists(list1, list2) {
     let currentNode1 = list1.head;
     let currentNode2 = list2.head;
-    let ll3 = new LinkedList();
+    let ll = new LinkedList();
 
     while (currentNode1 || currentNode2) {
         if (currentNode1 != null) {
-            ll3.append(currentNode1.val);
+            ll.append(currentNode1.val);
             currentNode1 = currentNode1.next;
         }
         if (currentNode2 != null) {
-            ll3.append(currentNode2.val);
+            ll.append(currentNode2.val);
             currentNode2 = currentNode2.next;
         }
     }
-    return ll3.toString();
+    return ll.toString();
 }
 
 module.exports = { LinkedList, zipLists };
