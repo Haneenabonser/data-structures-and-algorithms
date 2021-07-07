@@ -1,6 +1,3 @@
-'use strict';
-
-'use strict';
 
 class Node {
     constructor(val, next = null) {
@@ -16,6 +13,7 @@ class LinkedList {
 
     insert(val) {
         try {
+
             let node = new Node(val);
             if (!this.head) {
                 this.head = node;
@@ -26,19 +24,22 @@ class LinkedList {
         } catch {
             console.log('Enter a valid input');
         }
-    };
+    }
 
     includes(val) {
         try {
+
             let currentNode = this.head;
             if (!this.head) {
                 return false;
             } else {
+
                 while (currentNode.next) {
                     if (currentNode.val == val) {
                         return true;
                     }
                     currentNode = currentNode.next;
+
                     if (currentNode.next == null && val == currentNode.val) {
                         return true;
                     }
@@ -47,18 +48,20 @@ class LinkedList {
             }
         } catch {
             console.log('Enter a valid input');
-        };
-    };
+        }
+    }
 
     toString() {
         try {
-            let currentNode = this.head;
+
             let string = '';
+            let currentNode = this.head;
 
             while (currentNode.next) {
                 if (currentNode.val == null || currentNode.val == undefined) {
                     string = string + `NULL -> `;
                 } else {
+
                     string = string + `{${currentNode.val}} -> `
                 }
                 currentNode = currentNode.next;
@@ -66,11 +69,14 @@ class LinkedList {
                     string = string + `{${currentNode.val}}`
                 }
             }
+
             return string;
         } catch {
             console.log('Error');
         }
-    };
+
+    }
+
     append(val) {
         const node = new Node(val);
         if (!this.head) {
@@ -83,38 +89,24 @@ class LinkedList {
             currentNode.next = node;
         }
     }
-    insertBefore(newVal, val) {
-        const node = new Node(newVal);
-        let currentNode = this.head;
-
-        if (val == this.head.val) {
-            node.next = this.head;
-            this.head = node;
-        } else {
-
-            while (currentNode) {
-                if (currentNode.next.val == val) {
-                    node.next = currentNode.next;
-                    currentNode.next = node;
-                    break;
-                }
-                currentNode = currentNode.next;
-            }
-        }
-    }
-    insertAfter(newVal, val) {
-        let node = new Node(newVal);
-        let currentNode = this.head;
-        while (currentNode) {
-            if (currentNode.val == val) {
-                node.next = currentNode.next;
-                currentNode.next = node;
-                break;
-            }
-            currentNode = currentNode.next;
-        }
-    }
 }
 
+function zipLists(list1, list2) {
+    let currentNode1 = list1.head;
+    let currentNode2 = list2.head;
+    let ll = new LinkedList();
 
-module.exports = LinkedList;
+    while (currentNode1 || currentNode2) {
+        if (currentNode1 != null) {
+            ll.append(currentNode1.val);
+            currentNode1 = currentNode1.next;
+        }
+        if (currentNode2 != null) {
+            ll.append(currentNode2.val);
+            currentNode2 = currentNode2.next;
+        }
+    }
+    return ll.toString();
+}
+
+module.exports = { LinkedList, zipLists };
