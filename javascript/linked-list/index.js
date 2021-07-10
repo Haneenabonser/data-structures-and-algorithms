@@ -6,15 +6,21 @@ class Node {
     }
 }
 
+class Node {
+    constructor(value, next = null) {
+        this.value = value;
+        this.next = next;
+    }
+}
+
 class LinkedList {
     constructor() {
         this.head = null;
     }
 
-    insert(val) {
+    insert(value) {
         try {
-
-            let node = new Node(val);
+            let node = new Node(value);
             if (!this.head) {
                 this.head = node;
             } else {
@@ -24,23 +30,20 @@ class LinkedList {
         } catch {
             console.log('Enter a valid input');
         }
-    }
+    };
 
-    includes(val) {
+    includes(value) {
         try {
-
-            let currentNode = this.head;
+            let ptr = this.head;
             if (!this.head) {
                 return false;
             } else {
-
-                while (currentNode.next) {
-                    if (currentNode.val == val) {
+                while (ptr.next) {
+                    if (ptr.value == value) {
                         return true;
                     }
-                    currentNode = currentNode.next;
-
-                    if (currentNode.next == null && val == currentNode.val) {
+                    ptr = ptr.next;
+                    if (ptr.next == null && value == ptr.value) {
                         return true;
                     }
                 }
@@ -48,65 +51,32 @@ class LinkedList {
             }
         } catch {
             console.log('Enter a valid input');
-        }
-    }
+        };
+    };
 
     toString() {
         try {
-
+            let ptr = this.head;
             let string = '';
-            let currentNode = this.head;
-
-            while (currentNode.next) {
-                if (currentNode.val == null || currentNode.val == undefined) {
+            
+            while (ptr.next) {
+                if (ptr.value == null || ptr.value == undefined) {
                     string = string + `NULL -> `;
                 } else {
-
-                    string = string + `{${currentNode.val}} -> `
+                    string = string + `{${ptr.value}} -> `
                 }
-                currentNode = currentNode.next;
-                if (currentNode.next == null) {
-                    string = string + `{${currentNode.val}}`
+                ptr = ptr.next;
+                if (ptr.next == null) {
+                    string = string + `{${ptr.value}}`
                 }
             }
-
             return string;
         } catch {
             console.log('Error');
         }
 
-    }
+    };
+};
 
-    append(val) {
-        const node = new Node(val);
-        if (!this.head) {
-            this.head = node;
-        } else {
-            let currentNode = this.head;
-            while (currentNode.next) {
-                currentNode = currentNode.next;
-            }
-            currentNode.next = node;
-        }
-    }
-}
+module.exports = LinkedList;
 
-function zipLists(list1, list2) {
-    let currentNode1 = list1.head;
-    let currentNode2 = list2.head;
-    let ll = new LinkedList();
-
-    while (currentNode1 || currentNode2) {
-        if (currentNode1 != null) {
-            ll.append(currentNode1.val);
-            currentNode1 = currentNode1.next;
-        }
-        if (currentNode2 != null) {
-            ll.append(currentNode2.val);
-            currentNode2 = currentNode2.next;
-        }
-    }
-    return ll.toString();
-}
-
-module.exports = { LinkedList, zipLists };
