@@ -58,7 +58,7 @@ class LinkedList {
         try {
             let ptr = this.head;
             let string = '';
-            
+
             while (ptr.next) {
                 if (ptr.value == null || ptr.value == undefined) {
                     string = string + `NULL -> `;
@@ -76,7 +76,72 @@ class LinkedList {
         }
 
     };
+
+
+    // code-challenge 06
+
+    append(value) {
+        try {
+            let node = new Node(value);
+            if (!this.head) {
+                this.head = node;
+            } else {
+                let ptr = this.head;
+                while (ptr.next) {
+                    ptr = ptr.next;
+                }
+                ptr.next = node;
+            };
+        } catch {
+            console.log('Error');
+        };
+
+    };
+
+
+    insertBefore(value, ref) {
+        try {
+            let node = new Node(value);
+            if (!this.head) {
+                this.head = node;
+            } else {
+                let ptr = this.head;
+                if (this.head.value == ref) {
+                    node.next = this.head;
+                    this.head = node;
+                };
+                while (ptr) {
+                    if (ptr.next.value == ref) {
+                        node.next = ptr.next;
+                        ptr.next = node;
+                        break;
+                    }
+                    ptr = ptr.next;
+                };
+            };
+        } catch {
+            console.log('Error');
+        };
+    };
+
+    insertAfter(value, ref) {
+        try {
+            let node = new Node(value);
+            let ptr = this.head;
+            while (ptr) {
+                if (ptr.next.value == ref) {
+                    node.next = ptr.next;
+                    ptr.next = node;
+                    break;
+                }
+                ptr = ptr.next;
+            };
+        } catch {
+            console.log('Error');
+        };
+    };
 };
+
 
 module.exports = LinkedList;
 
