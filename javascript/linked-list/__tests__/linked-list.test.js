@@ -46,4 +46,69 @@ describe('Linked List', () => {
     expect(list.toString()).toBe('{7} -> {6} -> {false} -> {5}');
   });
 
+ // code-chalistenge 06
+  it(' Add a node to the end ',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+
+    expect(list.head.next.value).toEqual(2);
+  });
+
+  it('Add multiple nodes ',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+
+    expect(list.head.next.next.next.value).toEqual(4);
+  });
+  it('Insert in the middle',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.insertBefore(5,3);
+
+    expect(list.head.next.next.value).toEqual(5);
+  })
+  it('Insert before first',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.insertBefore(5,1);
+
+    expect(list.head.value).toEqual(5);
+  })
+  it('Insert after a value',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.insertAfter(5,3);
+
+    expect(list.head.next.next.value).toEqual(5);
+  })
+  it('Insert after last',()=>{
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.insertAfter(5,4);
+
+    expect(list.head.next.next.next.value).toEqual(5);
+  })
+
 });
