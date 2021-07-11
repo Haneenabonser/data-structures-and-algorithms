@@ -155,7 +155,25 @@ class LinkedList {
         }
     }
 };
+// code challenge08
+function zipLists(list1, list2) {
+    let ptr1 = list1.head;
+    let ptr2 = list2.head;
+    let list3 = new LinkedList();
+
+    while (ptr1 || ptr2) {
+        if (ptr1 != null) {
+            list3.append(ptr1.value);
+            ptr1 = ptr1.next;
+        }
+        if (ptr2 != null) {
+            list3.append(ptr2.value);
+            ptr2 = ptr2.next;
+        }
+    }
+    return list3.toString();
+}
 
 
-module.exports = LinkedList;
+module.exports = {LinkedList,zipLists} ;
 
