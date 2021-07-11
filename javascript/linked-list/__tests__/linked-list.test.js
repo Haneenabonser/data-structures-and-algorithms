@@ -124,7 +124,7 @@ describe('Kth from end', () => {
       list.append(3);
       list.append(4);
   
-      expect(list.kthFromEnd(12)).toBe("Index provided is greater than the elements count");
+      expect(list.kthFromEnd(12)).toBe("Exception, Index provided is greater than the elements count");
     })
     it('k and the length are the same',()=>{
       const list = new LinkedList();
@@ -134,7 +134,7 @@ describe('Kth from end', () => {
       list.append(3);
       list.append(4);
   
-      expect(list.kthFromEnd(4)).toBe("Index provided is greater than the elements count");
+      expect(list.kthFromEnd(4)).toBe("Exception, Index provided is greater than the elements count");
     })
 
     it('K is a negative integer',()=>{
@@ -145,7 +145,7 @@ describe('Kth from end', () => {
       list.append(3);
       list.append(4);
   
-      expect(list.kthFromEnd(-6)).toBe("negative index doesn't exist");
+      expect(list.kthFromEnd(-6)).toBe("Exception, negative index doesn't exist");
     })
 
     it('kth from the end',()=>{
