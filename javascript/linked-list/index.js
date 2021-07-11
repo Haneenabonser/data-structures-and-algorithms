@@ -92,7 +92,6 @@ class LinkedList {
 
     };
 
-
     insertBefore(value, ref) {
         try {
             let node = new Node(value);
@@ -134,6 +133,27 @@ class LinkedList {
             console.log('Error');
         };
     };
+
+
+    // code challenge07 
+
+    kthFromEnd(k) {
+        let array = [];
+        let ptr = this.head;
+
+        while (ptr) {
+            array.push(ptr.value);
+            ptr = ptr.next;
+        }
+        if (k >= array.length) {
+            return ("Exception, Index provided is greater than the elements count");
+        }
+        else if (k < 0) {
+            return ("Exception, negative index doesn't exist");
+        } else {
+            return array[array.length - 1 - k]
+        }
+    }
 };
 
 

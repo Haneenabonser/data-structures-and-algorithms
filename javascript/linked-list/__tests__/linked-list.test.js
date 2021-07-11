@@ -111,4 +111,54 @@ describe('Linked List', () => {
     expect(list.head.next.next.next.value).toEqual(5);
   })
 
+
+// code chalistenge07 
+
+describe('Kth from end', () => {
+
+    it('k is greater than the length of the linked list',()=>{
+      const list = new LinkedList();
+  
+      list.append(1);
+      list.append(2);
+      list.append(3);
+      list.append(4);
+  
+      expect(list.kthFromEnd(12)).toBe("Index provided is greater than the elements count");
+    })
+    it('k and the length are the same',()=>{
+      const list = new LinkedList();
+  
+      list.append(1);
+      list.append(2);
+      list.append(3);
+      list.append(4);
+  
+      expect(list.kthFromEnd(4)).toBe("Index provided is greater than the elements count");
+    })
+
+    it('K is a negative integer',()=>{
+      const list = new LinkedList();
+  
+      list.append(1);
+      list.append(2);
+      list.append(3);
+      list.append(4);
+  
+      expect(list.kthFromEnd(-6)).toBe("negative index doesn't exist");
+    })
+
+    it('kth from the end',()=>{
+      const list = new LinkedList();
+
+      list.append(1);
+      list.append(2);
+      list.append(3);
+      list.append(4);
+  
+      expect(list.kthFromEnd(2)).toEqual(2);
+   
+    })
+  });
+
 });
