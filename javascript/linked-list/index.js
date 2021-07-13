@@ -1,4 +1,10 @@
-'use strict';
+
+class Node {
+    constructor(val, next = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
 
 class Node {
     constructor(value, next = null) {

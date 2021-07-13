@@ -89,10 +89,10 @@ describe('Linked List', () => {
         list.insertBefore(5, 1);
 
         expect(list.head.value).toEqual(5);
+
     })
     it('Insert after a value', () => {
         const list = new LinkedList();
-
         list.append(1);
         list.append(2);
         list.append(3);
