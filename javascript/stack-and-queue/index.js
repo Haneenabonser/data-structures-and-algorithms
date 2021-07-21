@@ -106,8 +106,29 @@ class Queue {
             return false;
         }
     }
-
-
 }
 
-module.exports = { Stack, Queue };
+// codeChallenge 11
+
+    class PseudoQueue {
+        constructor() {
+          this.front = new Stack();
+          this.back = new Stack();
+        }
+      
+        enqueue(value) {
+          this.back.push(value);
+        }
+      
+        dequeue() {
+          if (this.front.isEmpty()) {
+            while (!this.back.isEmpty()) {
+              this.front.push(this.back.pop());
+            }
+          }
+          return this.front.pop();
+        }
+      };
+
+
+module.exports = { Stack, Queue, PseudoQueue};
