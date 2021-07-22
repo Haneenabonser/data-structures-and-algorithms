@@ -110,25 +110,63 @@ class Queue {
 
 // codeChallenge 11
 
-    class PseudoQueue {
-        constructor() {
-          this.front = new Stack();
-          this.back = new Stack();
-        }
-      
-        enqueue(value) {
-          this.back.push(value);
-        }
-      
-        dequeue() {
-          if (this.front.isEmpty()) {
+class PseudoQueue {
+    constructor() {
+        this.front = new Stack();
+        this.back = new Stack();
+    }
+
+    enqueue(value) {
+        this.back.push(value);
+    }
+
+    dequeue() {
+        if (this.front.isEmpty()) {
             while (!this.back.isEmpty()) {
-              this.front.push(this.back.pop());
+                this.front.push(this.back.pop());
             }
-          }
-          return this.front.pop();
         }
-      };
+        return this.front.pop();
+    }
+};
+
+// codeChallenge 12 
+
+class AnimalShelter {
+    constructor() {
+        this.front = null;
+        this.back = null;
+    }
+
+    enqueue(animal) {
+        let node = new Node(animal);
+        if (!this.front) {
+            this.front = node;
+            this.back = node;
+        } else if (animal === 'cat' || animal === 'dog') {
+            this.back.next = node;
+            this.back = node;
+        } else {
+            return "Please type cat or dog";
+        }
+    }
+
+    dequeue(pref) {
+        if (pref === "dog") {
+            let ptr = this.front;
+            this.front = ptr.next;
+            ptr.next = null;
+            return ptr.value;
+        } else if (pref === "cat") {
+            let ptr = this.front;
+            this.front = ptr.next;
+            ptr.next = null;
+            return ptr.value;
+        } else {
+            return null;
+        }
+    }
+}
 
 
-module.exports = { Stack, Queue, PseudoQueue};
+module.exports = { Stack, Queue, PseudoQueue, AnimalShelter};
