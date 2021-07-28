@@ -43,6 +43,23 @@ class BinaryTree {
         return result;
     }
 
+    // codeChallenge16
+    findMax() {
+        let maximum = 0;
+        const viewVar = (node) => {
+            if (node.value > maximum) {
+                maximum = node.value
+            }
+            if (node.left) {
+                viewVar(node.left);
+            }
+            if (node.right) {
+                viewVar(node.right);
+            }
+        }
+        viewVar(this.root);
+        return maximum;
+    }
 }
 
 // class BinarySearchTree {
@@ -101,5 +118,6 @@ class BinarySearchTree extends BinaryTree {
         return false;
     }
 }
+
 
 module.exports = { Node, BinaryTree, BinarySearchTree }
