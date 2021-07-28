@@ -2,7 +2,7 @@
 Tree is a non-linear data structure that uses connected nodes to represen hierarch data and have a root node that have 0 or more children up to 2 children and that applies to every child node.
 
 ## Challenge
-Find the Maximum Value in a Binary Tree.
+Breadth-first Traversal.
 
 ## Approach & Efficiency
 Used recursion to traverse through the tree with time complexity of n, Used Iterative approach to add to binary search tree with O(n), Used Iterative to check if element exists with O(n).
@@ -19,4 +19,4 @@ Used recursion to traverse through the tree with time complexity of n, Used Iter
 
 
 ## WhiteBoard
-![WhiteBoard](./code16.png)
+![WhiteBoard](./code17.png)
