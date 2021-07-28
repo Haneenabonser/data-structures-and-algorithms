@@ -2,7 +2,7 @@
 Tree is a non-linear data structure that uses connected nodes to represen hierarch data and have a root node that have 0 or more children up to 2 children and that applies to every child node.
 
 ## Challenge
-Breadth-first Traversal.
+Conduct “FizzBuzz” on a k-ary tree while traversing through it to create a new tree.
 
 ## Approach & Efficiency
 Used recursion to traverse through the tree with time complexity of n, Used Iterative approach to add to binary search tree with O(n), Used Iterative to check if element exists with O(n).
@@ -19,4 +19,4 @@ Used recursion to traverse through the tree with time complexity of n, Used Iter
 
 
 ## WhiteBoard
-![WhiteBoard](./code17.png)
+![WhiteBoard](./code18.png)
