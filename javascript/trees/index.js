@@ -82,6 +82,34 @@ class BinaryTree {
         }
         return treeNodesArray;
       }
+
+      // codeChallenge18
+      fizzBuzz(tree) {
+        let newTree = tree
+        let curNode = newTree.root;
+
+        let queue = [];
+        queue.push(curNode);
+
+        while (queue.length) {
+          curNode = queue.pop();
+          if (curNode.value % 3 === 0 && curNode.value % 5 === 0 && curNode !== null) {
+            curNode.value = 'FizzBuzz';    
+          }
+          else if (curNode.value % 3 === 0 && curNode !== null) {
+            curNode.value = 'Fizz';  
+          }
+          else if (curNode.value % 5 === 0 && curNode !== null) {
+            curNode.value = 'Buzz';
+          }
+          else if(curNode.value % 3 !== 0 && curNode.value % 5 !== 0 && curNode !== null) {
+            curNode.value = `${curNode.value}`;
+          }
+          if (curNode.left) queue.push(curNode.left);
+          if (curNode.right) queue.push(curNode.right);
+        }
+        return newTree;
+      }
 }
 
 // class BinarySearchTree {
