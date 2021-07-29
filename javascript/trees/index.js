@@ -60,6 +60,28 @@ class BinaryTree {
         viewVar(this.root);
         return maximum;
     }
+
+    // codeChallenge17
+    breadthFirst() {
+        let queue = [];
+        let curNode = null;
+        let treeNodesArray = [];
+
+        queue.unshift(this.root);
+
+        while (queue.length) {
+          curNode = queue.pop();
+          treeNodesArray.push(curNode.value);
+          
+          if (curNode.left) {
+            queue.unshift(curNode.left);
+          }
+          if (curNode.right) {
+            queue.unshift(curNode.right);
+          }
+        }
+        return treeNodesArray;
+      }
 }
 
 // class BinarySearchTree {
