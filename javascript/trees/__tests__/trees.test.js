@@ -1,6 +1,8 @@
 const Node = require('../index').Node;
 const BinaryTree = require('../index').BinaryTree;
 const BinarySearchTree = require('../index').BinarySearchTree;
+const treeIntersection = require('../index').treeIntersection;
+
 
 describe('Trees', () => {
     it('instantiate an empty tree', () => {
@@ -127,4 +129,84 @@ describe('Find Maximum Value in a Tree', () => {
             expect(fizBuzBrFirst).toEqual(['1','7','Buzz','1','Fizz','Fizz','Buzz','11','FizzBuzz']);
           });
     });
+
+// code challenge 32
+describe('Trees Intersection', () => {
+    it('No Intersection', () => {
+        let treeA = new BinaryTree();
+        treeA.root = new Node(1);
+        treeA.root.left = new Node(2);
+        treeA.root.right = new Node(3);
+        treeA.root.left.left = new Node(4);
+        treeA.root.left.right = new Node(5);
+        treeA.root.right.left = new Node(6);
+        treeA.root.right.right = new Node(7);
+        treeA.root.right.right.left = new Node(8);
+        treeA.root.right.right.right = new Node(9);
+    
+        let treeB = new BinaryTree();
+        treeB.root = new Node(10);
+        treeB.root.left = new Node(20);
+        treeB.root.right = new Node(30);
+        treeB.root.left.left = new Node(40);
+        treeB.root.left.right = new Node(50);
+        treeB.root.right.left = new Node(60);
+        treeB.root.right.right = new Node(70);
+        treeB.root.right.right.left = new Node(80);
+        treeB.root.right.right.right = new Node(90);
+        
+        expect(treeIntersection(treeA, treeB)).toEqual([]);
+    });
+    it('same trees', () => {
+        let treeA = new BinaryTree();
+        treeA.root = new Node(1);
+        treeA.root.left = new Node(2);
+        treeA.root.right = new Node(3);
+        treeA.root.left.left = new Node(4);
+        treeA.root.left.right = new Node(5);
+        treeA.root.right.left = new Node(6);
+        treeA.root.right.right = new Node(7);
+        treeA.root.right.right.left = new Node(8);
+        treeA.root.right.right.right = new Node(9);
+    
+        let treeB = new BinaryTree();
+        treeB.root = new Node(1);
+        treeB.root.left = new Node(2);
+        treeB.root.right = new Node(3);
+        treeB.root.left.left = new Node(4);
+        treeB.root.left.right = new Node(5);
+        treeB.root.right.left = new Node(6);
+        treeB.root.right.right = new Node(7);
+        treeB.root.right.right.left = new Node(8);
+        treeB.root.right.right.right = new Node(9);
+
+        expect(treeIntersection(treeA, treeB)).toEqual([1,2,4,5,3,6,7,8,9]);
+    });
+    it('different trees', () => {
+        let treeA = new BinaryTree();
+        treeA.root = new Node(1);
+        treeA.root.left = new Node(2);
+        treeA.root.right = new Node(3);
+        treeA.root.left.left = new Node(4);
+        treeA.root.left.right = new Node(5);
+        treeA.root.right.left = new Node(6);
+        treeA.root.right.right = new Node(7);
+        treeA.root.right.right.left = new Node(8);
+        treeA.root.right.right.right = new Node(9);
+    
+        let treeB = new BinaryTree();
+        treeB.root = new Node(1);
+        treeB.root.left = new Node(2);
+        treeB.root.right = new Node(3);
+        treeB.root.left.left = new Node(4);
+        treeB.root.left.right = new Node(50);
+        treeB.root.right.left = new Node(6);
+        treeB.root.right.right = new Node(7);
+        treeB.root.right.right.left = new Node(81);
+        treeB.root.right.right.right = new Node(9);
+
+        expect(treeIntersection(treeA, treeB)).toEqual([1,2,4,3,6,7,9]);
+    });
+   
+  });
     
