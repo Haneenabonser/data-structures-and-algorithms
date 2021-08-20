@@ -47,8 +47,6 @@ class HashMap {
 
     add(key, value) {
         const hash = this.hash(key);
-        console.log('Key', hash);
-
         if (!this.storage[hash]) {
             const list = new LinkedList();
             list.prepend({ [key]: value });
@@ -97,4 +95,25 @@ function repeatedWord(paragraph) {
     return 'The paragraph has no repeated words!';
 }
 
-module.exports = { Node, LinkedList, HashMap, repeatedWord}
+// code challenge 32 
+function leftJoins(hashMap1, hashMap2) {
+    let Array1 = [];
+
+    for (let i = 0; i < hashMap1.storage.length; i++) {
+        if (hashMap1.storage[i] !== undefined) {
+            let Array2 = [];
+            let key = (Object.keys(hashMap1.storage[i].head.value)[0]);
+            Array2.push(key);
+            Array2.push(hashMap1.storage[i].head.value[key]);
+            if (hashMap2.contains(key)) {
+                Array2.push(hashMap2.get(key));
+            } else {
+                Array2.push(null);
+            }
+            Array1.push(Array2);
+        }
+    }
+    return Array1;
+}
+
+module.exports = { Node, LinkedList, HashMap, repeatedWord, leftJoins }
